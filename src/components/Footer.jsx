@@ -11,13 +11,19 @@ import Divider from "@mui/joy/Divider";
 import logoUrl from "../assets/GAlogo.png";
 import { Container } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 function Footer() {
+
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <Box sx={{ ...styles.footer }}>
       <Container
         id="Footer"
-        sx={{
+        sx={isSmallScreen?{}:{
           paddingLeft: "120px",
           paddingRight: "120px",
           paddingTop: "62px",
@@ -40,7 +46,11 @@ function Footer() {
           </Box>
           <Box
             marginTop={1.2}
-            sx={{
+            sx={isSmallScreen?{
+              display: "flex",
+              flexDirection: "column",
+              gridColumn: "2 / 12",
+            }:{
               display: "flex",
               flexDirection: "column",
               gridColumn: "4 / 12",
@@ -60,7 +70,7 @@ function Footer() {
               gridRow: "2",
             }}
           >
-            <box>
+            <Box>
               <a
                 href="https://www.linkedin.com/company/gabriel-ai1/"
                 target="_blank"
@@ -75,10 +85,15 @@ function Footer() {
                   }}
                 />
               </a>
-            </box>
+            </Box>
           </Box>
           <Box
-            sx={{
+            sx={isSmallScreen?{
+              display: "flex",
+              flexDirection: "column",
+              gridColumn: "2 / 8",
+              gridRow: "2"
+            }:{
               display: "flex",
               flexDirection: "column",
               gridColumn: "4 / 8",
@@ -94,12 +109,12 @@ function Footer() {
               >
                 admin@gabrielai.co
               </a>{" "}
-              <br />
-              Phone Number: +1 (907) 227-1800
             </Body1Typography>
           </Box>
         </Box>
-        <Body2Typography marginTop={4}>
+        <Body2Typography 
+        sx={isSmallScreen?{paddingBottom:"20px"}:{marginTop:"20px"}}
+        >
           © Gabriel AI All Rights Reserved Privacy | Terms and Conditions
         </Body2Typography>
       </Container>

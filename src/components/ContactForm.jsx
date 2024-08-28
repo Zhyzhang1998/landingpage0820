@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import styles from "./Styles";
 import { Container } from "@mui/material";
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 function ContactForm() {
   const [submit, setSubmit] = useState(false);
@@ -40,42 +42,48 @@ function ContactForm() {
     });
   }
 
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <Container
       id="Contact"
-      sx={{
-        paddingLeft: "120px",
-        paddingRight: "120px",
-        paddingTop: "60px",
-        paddingBottom: "64px",
-      }}
+      sx={isSmallScreen?{marginLeft:"40px"}:{}}
+
     >
       <Box>
       
         <H2Typography>Contact Us</H2Typography>
         {submit ? (
           <Box
-          marginTop={5}
-          borderRadius={"20px"}
-          boxShadow={10}
-          marginLeft={"200px"}
-          marginRight={"200px"}
-          sx={{
+          sx={isSmallScreen?{
+            marginBottom:"80px",
+            display:"flex",
+            justifyContent:"center",
+            width:"320px"
+          }:{
             ...styles.formSetting,
             px: 0,
             gridTemplateRows: "200px",
             position: "relative",
+            marginTop:"40px",
+          borderRadius:"20px",
+          boxShadow:"10",
+          marginLeft:"200px",
+          marginRight:"200px",
+          marginBottom:"60px"
           }}
         >
         <Box
+        
             marginTop={"80px"}
-            marginLeft={"25px"}
-            sx={{
+            sx={isSmallScreen?{}:{
               display: "flex",
               flexDirection: "column",
               gridColumn: "4 / 12",
               position: "relative",
               gridRow: "1",
+              marginLeft:"25px"
             }}
           >
         <div className="afterForm">
@@ -85,21 +93,25 @@ function ContactForm() {
           
         ) : (
         <Box
-          marginTop={5}
-          borderRadius={"20px"}
-          boxShadow={10}
-          marginLeft={"200px"}
-          marginRight={"200px"}
-          sx={{
+          
+          sx={isSmallScreen?{
+            marginBottom:"70px"
+          }:{
             ...styles.formSetting,
             px: 0,
             gridTemplateRows: "780px",
             position: "relative",
+            marginTop:"40px",
+          borderRadius:"20px",
+          boxShadow:"10",
+          marginLeft:"200px",
+          marginRight:"200px",
+          marginBottom:"80px"
           }}
         >
           <Box
             marginTop={"30px"}
-            sx={{
+            sx={isSmallScreen?{width:"320px"}:{
               display: "flex",
               flexDirection: "column",
               gridColumn: "2 / 12",

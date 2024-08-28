@@ -11,11 +11,14 @@ import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
 import {
   H2Typography,
-  Body1Typography,
-  H3Typography,
   H4Typography,
+  Body1Typography
 } from "./Fonts";
+import styles from "./Styles";
 import { motion } from 'framer-motion';
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Margin } from "@mui/icons-material";
 
 const fadeInVariants = {
   offscreen: {
@@ -33,28 +36,7 @@ const fadeInVariants = {
   }
 };
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#B2C2EB",
-    color: "#2C2F2E",
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontFamily: "poppins",
-    fontWeight: 500,
-    fontSize: 14,
-    color: "#333333",
-  },
-}));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
 
 function createData(feature, gabriel, calling, text) {
   return { feature, gabriel, calling, text };
@@ -65,19 +47,19 @@ const rows = [
     "Personalization",
     <Box display="flex" alignItems="center" justifyContent="center">
       <CheckCircleOutlineIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "green" }}
+        sx={{ fontSize: "18px", color: "green" }}
       />{" "}
       Highly personalized with dynamic voice
     </Box>,
     <Box display="flex" alignItems="center" justifyContent="center">
       <HighlightOffIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "red" }}
+        sx={{ fontSize: "18px", color: "red" }}
       />{" "}
       Personalized but expensive
     </Box>,
     <Box display="flex" alignItems="center" justifyContent="center">
       <HighlightOffIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "red" }}
+        sx={{ fontSize: "18px", color: "red" }}
       />
       Limited
     </Box>
@@ -86,19 +68,19 @@ const rows = [
     "Emotional Engagement",
     <Box display="flex" alignItems="center" justifyContent="center">
       <CheckCircleOutlineIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "green" }}
+        sx={{ fontSize: "18px", color: "green" }}
       />{" "}
       Capturing attention more effectively
     </Box>,
     <Box display="flex" alignItems="center" justifyContent="center">
       <CheckCircleOutlineIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "green" }}
+        sx={{ fontSize: "18px", color: "green" }}
       />{" "}
       Capturing attention more effectively
     </Box>,
     <Box display="flex" alignItems="center" justifyContent="center">
       <HighlightOffIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "red" }}
+        sx={{ fontSize: "18px", color: "red" }}
       />
       May be ignored.
     </Box>
@@ -107,19 +89,19 @@ const rows = [
     "Response Rate",
     <Box display="flex" alignItems="center" justifyContent="center">
       <CheckCircleOutlineIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "green" }}
+        sx={{ fontSize: "18px", color: "green" }}
       />{" "}
       Higher response rates
     </Box>,
     <Box display="flex" alignItems="center" justifyContent="center">
       <CheckCircleOutlineIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "green" }}
+        sx={{ fontSize: "18px", color: "green" }}
       />{" "}
       Higher response rates
     </Box>,
     <Box display="flex" alignItems="center" justifyContent="center">
       <HighlightOffIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "red" }}
+        sx={{ fontSize: "18px", color: "red" }}
       />
       Unpredictable
     </Box>
@@ -128,19 +110,19 @@ const rows = [
     "Efficiency",
     <Box display="flex" alignItems="center" justifyContent="center">
       <CheckCircleOutlineIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "green" }}
+        sx={{ fontSize: "18px", color: "green" }}
       />{" "}
       More efficient
     </Box>,
     <Box display="flex" alignItems="center" justifyContent="center">
       <HighlightOffIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "red" }}
+        sx={{ fontSize: "18px",color: "red" }}
       />
       Time consuming
     </Box>,
     <Box display="flex" alignItems="center" justifyContent="center">
       <CheckCircleOutlineIcon
-        sx={{ fontSize: "18px", marginRight: "5px", color: "green" }}
+        sx={{ fontSize: "18px", color: "green" }}
       />
       More efficient
     </Box>
@@ -148,15 +130,38 @@ const rows = [
 ];
 
 function WhyUs() {
+  
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: "#B2C2EB",
+      color: "#2C2F2E",
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontFamily: "poppins",
+      fontWeight: 500,
+      fontSize: isSmallScreen? 9 : 13,
+      color: "#333333",
+    }
+  }));
+  
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
+    },
+    // hide last border
+    "&:last-child td, &:last-child th": {
+      border: 0,
+    },
+  }));
+
   return (
     <Container
       id="WhyUs"
-      sx={{
-        paddingLeft: "120px",
-        paddingRight: "120px",
-        paddingTop: "60px",
-        paddingBottom: "64px",
-      }}
+      sx={isSmallScreen?{...styles.containerStyleSm, height: '620px'}:{ ...styles.containerStyle, height: '540px' }
+    }
     >
     <motion.div
         initial="offscreen"
@@ -168,7 +173,7 @@ function WhyUs() {
         <H2Typography>Why Gabriel AI ?</H2Typography>
         <Box justifyContent={"center"} sx={{ display: "flex" }}>
           <Table
-            sx={{ width: 1100, marginTop: 5, marginBottom: 5 }}
+            sx={isSmallScreen?{display:"none"}:{ width: 1100, marginTop: 5, marginBottom: 5 }}
             aria-label="customized table"
           >
             <TableHead>
@@ -202,6 +207,60 @@ function WhyUs() {
                 </StyledTableCell>
                 <StyledTableCell align="center">
                   <H4Typography>Text/email</H4Typography>
+                </StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <StyledTableRow key={row.feature}>
+                  <StyledTableCell align="center" component="th" scope="row">
+                    {row.feature}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.gabriel}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    {row.calling}
+                  </StyledTableCell>
+                  <StyledTableCell align="center">{row.text}</StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <Table
+          sx={isSmallScreen?{marginTop:"40px"}:{display:"none"}}
+          >
+          <TableHead>
+              <TableRow>
+                <StyledTableCell align="center">
+                  <Body1Typography
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    Feature
+                  </Body1Typography>
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <Body1Typography
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    Gabriel personalized message
+                  </Body1Typography>
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <Body1Typography
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    Manual calling
+                  </Body1Typography>
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  <Body1Typography>Text/email</Body1Typography>
                 </StyledTableCell>
               </TableRow>
             </TableHead>

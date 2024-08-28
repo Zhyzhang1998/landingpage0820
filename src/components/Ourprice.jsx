@@ -12,6 +12,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import styles from "./Styles";
 import { motion } from 'framer-motion';
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 const fadeInVariants = {
   offscreen: {
@@ -53,16 +55,14 @@ function Ourprice() {
     setTextFieldValue((newValue * 0.25).toFixed(2));
   };
 
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <Container
       id="Pricing"
-      sx={{
-        paddingLeft: "120px",
-        paddingRight: "120px",
-        paddingTop: "60px",
-        paddingBottom: "64px",
-        position: "relative",
-      }}
+      sx={isSmallScreen?{...styles.containerStyleSm, height: '900px'}:{ ...styles.containerStyle, height: '700px' }
+    }
     >
     <motion.div
         initial="offscreen"
@@ -70,19 +70,17 @@ function Ourprice() {
         viewport={{ once: true, amount: 0.8 }}
         variants={fadeInVariants}
       >
-      <Box>
+      <Box
+      >
         <H2Typography>Our Pricing</H2Typography>
         <Box
           marginTop={5}
-          sx={{
-            ...styles.gridSetting,
-            px: 0,
-            gridTemplateRows: "1fr",
-            position: "relative",
-          }}
+          sx={isSmallScreen?{display: 'flex', flexDirection:'column'}:{ display: 'grid', px: 0, gridTemplateColumns: '1fr', position: "relative" }}
         >
           <Box
-            sx={{
+            sx={
+              isSmallScreen?{display: 'flex', flexDirection:'column', marginBottom:'40px'}:
+              {
               display: "flex",
               flexDirection: "column",
               gridColumn: "1 / 8",
@@ -90,7 +88,8 @@ function Ourprice() {
               zIndex: 2,
             }}
           >
-            <Body1Typography width={400} textAlign={"justify"}>
+            <Body1Typography textAlign={"justify"}
+            sx={isSmallScreen?{}:{width:"400px"}}>
               At our service, we understand that flexibility is key. Not sure
               how many messages you'll need to send? No problem! We offer a
               pay-per-message approach, allowing you to plan your marketing
@@ -102,7 +101,14 @@ function Ourprice() {
             </Body1Typography>
           </Box>
           <Box
-            sx={{
+            sx={
+              isSmallScreen?{
+                display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+              }
+              :{
               display: "flex",
               flexDirection: "column",
               gridColumn: "12/ 8",
@@ -113,20 +119,25 @@ function Ourprice() {
             }}
           >
             <Box
-              boxShadow={10}
+            sx={isSmallScreen?{
+              width:"450px"
+            }
+            :{width:"500px", boxShadow:"10"}}
+              
               paddingTop={1}
               paddingBottom={2}
-              width={500}
               borderRadius={"20px"}
               color={"white"}
             >
               <H3Typography textAlign="center" marginTop={3}>
                 Cost Calculation
               </H3Typography>
-              <Body1Typography marginLeft={5} marginTop={3}>
+              <Body1Typography 
+              sx={isSmallScreen?{marginLeft:'0px', marginTop:"40px"}:{marginLeft:'40px', marginTop:"40px"}}>
                 Number of messages:
               </Body1Typography>
-              <Box marginLeft={5} paddingTop={6} sx={{ width: 400 }}>
+              <Box 
+              sx={isSmallScreen?{width:"340px", paddingTop:"40px",marginLeft:'0px'}:{width:"410px", paddingTop:"40px",marginLeft:'40px'}}>
                 <Slider
                   aria-label="Always visible"
                   value={sliderValue}
@@ -138,13 +149,15 @@ function Ourprice() {
                   valueLabelDisplay="on"
                   onChange={handleSliderChange}
                 />
-                <Body1Typography marginBottom={3}>
+                <Body1Typography 
+                sx={{marginTop:"20px",marginBottom:"20px"}}>
                   How much it will cost:
                 </Body1Typography>
                 <TextField
                   id="outlined-required"
                   value={"$" + textFieldValue}
                   readOnly
+                  fullWidth
                 />
                 <Body2Typography marginTop={"10px"}>
                   * May differ from actual costs
@@ -161,6 +174,7 @@ function Ourprice() {
                     variant="getQuote"
                     href="mailto:admin@gabrielai.co"
                     target="_blank"
+                    fullWidth
                   >
                     Get Quote
                   </Button>

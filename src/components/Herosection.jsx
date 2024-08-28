@@ -12,6 +12,7 @@ import { Howl } from 'howler';
 import demo1Url from '../assets/Demo1.mp3';
 import demo2Url from '../assets/Demo2.mp3';
 import demo3Url from '../assets/Demo3.mp3';
+import background1Url from '../assets/background1.svg'
 import SoundWave from './SoundWave';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
@@ -97,7 +98,7 @@ function Herosection() {
   return (
     <Container id='HeroSection' sx={isSmallScreen?{...styles.containerStyleSm, height: '1200px'}:{ ...styles.containerStyle, height: '800px' }}>
       <Box sx={isSmallScreen?{display: 'flex', flexDirection:'column'}:{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: '15px' }}>
-        <Box sx={isSmallScreen?{display: 'flex', flexDirection: 'column', justifyContent:'center'}:{ gridColumn: 1, paddingTop: '40px' }}>
+        <Box className='hero' sx={isSmallScreen?{display: 'flex', flexDirection: 'column', justifyContent:'center'}:{ gridColumn: 1, paddingTop: '40px' }}>
           <H1Typography sx={isSmallScreen?{textAlign: 'center', paddingBottom: '20px', lineHeight: '110%', fontSize: 38 }:{ paddingBottom: '20px', lineHeight: '110%' }}>
             Your voice is your power.
           </H1Typography>
@@ -117,19 +118,19 @@ function Herosection() {
         </Box>
         <Box sx={isSmallScreen?{}:{ gridColumn: 2, display: 'flex', flexDirection: 'column', justifyContent: 'end', paddingTop: '40px' }}>
           {isSmallScreen?
-            <Box className='box1' sx={{ position: 'absolute', zIndex: -1, top: '120px', opacity: '60%'}}>
-            <svg width="712" height="360" viewBox="0 0 712 395" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="1070" height="395" rx="188" fill="url(#paint0_linear_139_2108)" />
-              <defs>
-                <linearGradient id="paint0_linear_139_2108" x1="-1.28316e-06" y1="197.198" x2="901.053" y2="197.198" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#F4DBAB" stopOpacity="0.4" />
-                  <stop offset="0.574" stopColor="#F1D5CB" />
-                  <stop offset="1" stopColor="white" stopOpacity="0.01" />
-                </linearGradient>
-              </defs>
+          <Box className='box1' sx={{ position: 'absolute', zIndex: -1, top: '120px', right: '0px', opacity: '60%'}}>
+            <svg width="100%" height="395" viewBox="0 0 373 395" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1070" height="395" rx="188" fill="url(#paint0_linear_139_2108)"/>
+            <defs>
+            <linearGradient id="paint0_linear_139_2108" x1="-1.28316e-06" y1="197.198" x2="901.053" y2="197.198" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F4DBAB" stop-opacity="0.4"/>
+            <stop offset="0.574" stop-color="#F1D5CB"/>
+            <stop offset="1" stop-color="white" stop-opacity="0.01"/>
+            </linearGradient>
+            </defs>
             </svg>
           </Box>:
-          <Box className='box1' sx={{ position: 'absolute', zIndex: 1, top: '120px', right: 0 }}>
+          <Box className='box1' sx={{ position: 'absolute', zIndex: 1, top: '120px', right: 0}}>
             <svg width="712" height="395" viewBox="0 0 712 395" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="1070" height="395" rx="188" fill="url(#paint0_linear_139_2108)" />
               <defs>
@@ -145,6 +146,7 @@ function Herosection() {
             <img
               src={backgroundUrl}
               alt='Demo'
+              // style={{width: 'auto', height: '100%'}}
             />
           </Box>
           {isSmallScreen? 

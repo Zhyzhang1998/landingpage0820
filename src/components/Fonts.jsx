@@ -27,7 +27,7 @@ const H3TypographySm = styled(Typography) ({
 const H4Typography = styled(Typography)({
   fontFamily: "poppins",
   fontWeight: 500,
-  fontSize: 18,
+  fontSize: 17,
   color: "#333333",
 });
 

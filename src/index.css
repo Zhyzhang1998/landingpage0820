@@ -6,6 +6,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.scrollhere {
+  overflow: scroll; /* Ensure scrolling is enabled */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+
+  /* Hide scrollbar for WebKit-based browsers (Chrome, Safari) */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
