@@ -51,7 +51,7 @@ function Testimonial() {
         <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
         {isSmallScreen? <H2TypographySm>Our Community</H2TypographySm>:
           <H2Typography>
-            Our Community
+            What Our Customers Are Saying
           </H2Typography>}
           {/* <Box sx={{display: 'flex', alignItems: 'center'}}>
             <H3Typography>See More Reviews</H3Typography>

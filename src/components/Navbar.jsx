@@ -42,7 +42,7 @@ function Navbar() {
       position="sticky"
       sx={{
         backgroundColor: 'white',
-        borderBottom: '3px solid #F6F6F6'
+        borderBottom: '3px solid #F6F6F6',
       }}
       elevation={0}
     >
@@ -118,18 +118,18 @@ function Navbar() {
               ))}
             </Box>
             <Box className='login' sx={{display: { xs: 'none', md: 'flex' }, alignItems: 'center', justifyContent: 'flex-end', gridColumn: '10 / 13'}}>
-              <Button
+              {/* <Button
               sx={styles.navButton}
               href="https://gabrielai.co/login"
               >
                 Login
-              </Button>
+              </Button> */}
               <Button
               variant="contained"
-              sx={styles.regularButton}
-              href="https://gabrielai.co/register"
+              sx={{...styles.regularButton, px: '20px'}}
+              href="https://gabrielai.co/login"
               >
-                Get Started
+                Login
               </Button>
             </Box>
           </Box>

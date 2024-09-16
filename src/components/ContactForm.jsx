@@ -12,11 +12,11 @@ import { useTheme } from '@mui/material/styles';
 function ContactForm() {
   const [submit, setSubmit] = useState(false);
   const [formData, setFormData] = useState({
-    "entry.2005620554": "", // First Name
-    "entry.734046653": "", // Last Name
-    "entry.1045781291": "", // Email
-    "entry.1166974658": "", // Phone Number
-    "entry.839337160": "", // What else you want to share?
+    "entry.1841495607": "", // First Name
+    "entry.2000399062": "", // Last Name
+    "entry.1172701207": "", // Email
+    "entry.1693962392": "", // Phone Number
+    "entry.580459612": "", // What else you want to share?
   });
 
   const handleInputData = (input) => (e) => {
@@ -32,7 +32,8 @@ function ContactForm() {
     e.preventDefault();
     setSubmit(true);
 
-    let url = `https://docs.google.com/forms/u/0/d/e/1FAIpQLScI1trloKv5BZDVn8mEeW6epQfqQ4Pg67RG96rsol69e0BjFQ/formResponse?entry.2005620554=${formData["entry.2005620554"]}&entry.734046653=${formData["entry.734046653"]}&entry.1045781291=${formData["entry.1045781291"]}&entry.1166974658=${formData["entry.1166974658"]}&entry.839337160=${formData["entry.839337160"]}`;
+       // Updated form URL
+       let url = `https://docs.google.com/forms/u/0/d/1u9h-JBmsnRWOK6A0sn3qZ-GqLz3KLo4uxDS7WYy9KZI/formResponse?entry.1841495607=${formData["entry.1841495607"]}&entry.2000399062=${formData["entry.2000399062"]}&entry.1172701207=${formData["entry.1172701207"]}&entry.1693962392=${formData["entry.1693962392"]}&entry.580459612=${formData["entry.580459612"]}`;
 
     const res = await fetch(url, {
       method: "POST",
@@ -127,9 +128,9 @@ function ContactForm() {
                 >First Name:</H4Typography>
                   <TextField
                     required
-                    name="entry.2005620554"
-                    onChange={handleInputData("entry.2005620554")}
-                    value={formData["entry.2005620554"]}
+                    name="entry.1841495607"
+                    onChange={handleInputData("entry.1841495607")}
+                    value={formData["entry.1841495607"]}
                     variant="outlined"
                     fullWidth
                     marginTop="20px"
@@ -143,9 +144,9 @@ function ContactForm() {
                   <TextField
                     required
                     
-                    name="entry.734046653"
-                    onChange={handleInputData("entry.734046653")}
-                    value={formData["entry.734046653"]}
+                    name="entry.2000399062"
+                    onChange={handleInputData("entry.2000399062")}
+                    value={formData["entry.2000399062"]}
                     variant="outlined"
                     fullWidth
                     size="small"
@@ -158,9 +159,9 @@ function ContactForm() {
                   <TextField
                     required
                     
-                    name="entry.1045781291"
-                    onChange={handleInputData("entry.1045781291")}
-                    value={formData["entry.1045781291"]}
+                    name="entry.1172701207"
+                    onChange={handleInputData("entry.1172701207")}
+                    value={formData["entry.1172701207"]}
                     variant="outlined"
                     fullWidth
                     size="small"
@@ -172,9 +173,9 @@ function ContactForm() {
                 >Phone Number:</H4Typography>
                   <TextField
                     required
-                    name="entry.1166974658"
-                    onChange={handleInputData("entry.1166974658")}
-                    value={formData["entry.1166974658"]}
+                    name="entry.1693962392"
+                    onChange={handleInputData("entry.1693962392")}
+                    value={formData["entry.1693962392"]}
                     variant="outlined"
                     fullWidth
                     size="small"
@@ -185,9 +186,9 @@ function ContactForm() {
                 marginBottom={'10px'}
                 >What else you want to share?</H4Typography>
                   <TextField
-                    name="entry.839337160"
-                    onChange={handleInputData("entry.839337160")}
-                    value={formData["entry.839337160"]}
+                    name="entry.580459612"
+                    onChange={handleInputData("entry.580459612")}
+                    value={formData["entry.580459612"]}
                     variant="outlined"
                     multiline
                     rows={4}
