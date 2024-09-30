@@ -128,6 +128,7 @@ function Navbar() {
               variant="contained"
               sx={{...styles.regularButton, px: '20px'}}
               href="https://gabrielai.co/login"
+              target="_blank" rel="noopener noreferrer"
               >
                 Login
               </Button>
